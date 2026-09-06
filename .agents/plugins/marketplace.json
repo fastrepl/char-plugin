@@ -1,0 +1,20 @@
+{
+  "name": "fastrepl-char",
+  "interface": {
+    "displayName": "Fastrepl Char"
+  },
+  "plugins": [
+    {
+      "name": "char",
+      "source": {
+        "source": "local",
+        "path": "./plugins/char"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

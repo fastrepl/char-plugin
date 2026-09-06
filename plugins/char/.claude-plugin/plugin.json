@@ -1,0 +1,15 @@
+{
+  "name": "char",
+  "version": "0.1.0",
+  "description": "Search and edit local Char pages through the Nightly CLI and MCP.",
+  "author": {
+    "name": "Fastrepl",
+    "url": "https://char.com"
+  },
+  "homepage": "https://github.com/fastrepl/char-agent-plugin",
+  "repository": "https://github.com/fastrepl/char-agent-plugin",
+  "license": "GPL-3.0-only",
+  "keywords": ["notes", "pages", "tasks", "mcp", "nightly"],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json"
+}

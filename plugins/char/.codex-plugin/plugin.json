@@ -1,0 +1,27 @@
+{
+  "name": "char",
+  "version": "0.1.0",
+  "description": "Search and edit local Char pages through the Nightly CLI and MCP.",
+  "author": {
+    "name": "Fastrepl",
+    "url": "https://char.com"
+  },
+  "homepage": "https://github.com/fastrepl/char-agent-plugin",
+  "repository": "https://github.com/fastrepl/char-agent-plugin",
+  "license": "GPL-3.0-only",
+  "keywords": ["notes", "pages", "tasks", "mcp", "nightly"],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "Char",
+    "shortDescription": "Work with your local Char notes",
+    "longDescription": "Search local Char pages, tasks, people, and organizations. Export pages with stable block IDs and apply requested page edits through Char Nightly.",
+    "developerName": "Fastrepl",
+    "category": "Productivity",
+    "capabilities": ["Search local data", "Export pages", "Edit page blocks"],
+    "websiteURL": "https://char.com",
+    "defaultPrompt": ["Find my notes about the launch.", "Summarize my daily page in Char."],
+    "composerIcon": "./assets/icon.png",
+    "logo": "./assets/icon.png"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "char": {
+      "type": "stdio",
+      "command": "char-nightly",
+      "args": ["mcp"]
+    }
+  }
+}

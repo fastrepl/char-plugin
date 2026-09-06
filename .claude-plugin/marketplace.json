@@ -1,0 +1,19 @@
+{
+  "name": "fastrepl-char",
+  "owner": {
+    "name": "Fastrepl",
+    "url": "https://char.com"
+  },
+  "metadata": {
+    "description": "Official Char agent plugin",
+    "version": "0.1.0"
+  },
+  "plugins": [
+    {
+      "name": "char",
+      "source": "./plugins/char",
+      "description": "Search and edit local Char pages through the Nightly CLI and MCP.",
+      "version": "0.1.0"
+    }
+  ]
+}
