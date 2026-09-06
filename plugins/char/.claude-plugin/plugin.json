@@ -1,15 +1,15 @@
 {
   "name": "char",
-  "version": "0.1.1",
-  "description": "Search and edit local Char pages through the Nightly CLI and MCP.",
+  "version": "0.2.0",
+  "description": "Search and read explicitly shared Char cloud pages through authenticated MCP.",
   "author": {
     "name": "Fastrepl",
     "url": "https://char.com"
   },
-  "homepage": "https://github.com/fastrepl/char-agent-plugin",
+  "homepage": "https://github.com/fastrepl/char-agent-plugin#readme",
   "repository": "https://github.com/fastrepl/char-agent-plugin",
   "license": "GPL-3.0-only",
-  "keywords": ["notes", "pages", "tasks", "mcp", "nightly"],
+  "keywords": ["notes", "pages", "mcp", "cloud"],
   "skills": "./skills/",
   "mcpServers": "./.mcp.json"
 }

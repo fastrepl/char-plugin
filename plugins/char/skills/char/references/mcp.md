@@ -1,21 +1,13 @@
-# MCP
+# Cloud MCP
 
-Launch with `char-nightly mcp`. This is a local stdio server, with JSON-RPC on stdout and diagnostics on stderr. It uses the same desktop bridge and native fallback as the CLI. It has no hosted endpoint or cloud OAuth flow.
+Endpoint: `https://char.com/api/mcp`. Transport: Streamable HTTP. Authentication: Char OAuth; required scope `char:content:read`.
 
-- `get_status` takes `{}` and reports channel, database path, and bridge availability. Read-only.
-- `search` takes `{ "query": "launch", "limit": 10 }`. Limit defaults to 20 and accepts 1–50. Returns the CLI's search hits (`kind`, `id`, `title`, `snippet`, `rank`) as JSON text. Only `kind: "page"` IDs can be used with `export_page`. Read-only.
-- `export_page` takes `{ "pageId": "<returned-page-id>" }` or `{ "daily": "today" }`. Returns `{ "pageId": "...", "markdown": "..." }` as JSON text. May persist normalized editor state to stabilize block IDs, so it is not marked read-only.
-- `edit_page` takes a page selector plus `edit`, and applies it directly. Export first and verify afterward.
+| Tool          | Input                                | Result                                                         |
+| ------------- | ------------------------------------ | -------------------------------------------------------------- |
+| `get_status`  | `{}`                                 | Cloud sharing status, selected-page count, and `publishedAt`   |
+| `search`      | `{ "query": "launch", "limit": 20 }` | Shared page IDs, titles, kind, source update time, upload time |
+| `export_page` | `{ "pageId": "returned-id" }`        | Page Markdown and timestamps, or `page_unavailable`            |
 
-```json
-{
-  "pageId": "<returned-page-id>",
-  "edit": {
-    "type": "replace",
-    "blockId": "<returned-block-id>",
-    "markdown": "Updated text"
-  }
-}
-```
+Search accepts an empty query to list pages and limits results to 1–50. Exporting does not normalize editor state or create block IDs. All three tools are read-only, idempotent, non-destructive, and limited to the signed-in account's shared pages. There is no cloud `edit_page` tool.
 
-Other edits are `insert-after` with `blockId` and `markdown`, or `delete` with only `blockId`. Pass exactly one of `pageId` and `daily`. The server does not expose arbitrary SQL, shell commands, or agent lifecycle hooks as MCP tools.
+An unavailable page may be unshared, deleted, or absent from the last upload. Do not infer which unless the user confirms it. `publishedAt` is the cloud upload time; `updatedAt` is the source page's update time.

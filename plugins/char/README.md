@@ -2,12 +2,33 @@
 
 <img src="assets/icon.png" width="96" height="96" alt="Char">
 
-Search and edit local Char pages through the Nightly CLI and MCP. This bundle contains the portable plugin, one shared skill, and manifests for Codex, Claude Code, and Cursor.
+Search and read the Char pages you explicitly share with agents. Claude Code, Codex, and Cursor use one hosted MCP service with Char account sign-in. The service is read-only and remains accessible while Char is closed.
 
-See the [repository installation guide](https://github.com/fastrepl/char-agent-plugin#readme), [setup](skills/char/references/setup.md), [CLI commands](skills/char/references/cli.md), and [MCP tools](skills/char/references/mcp.md).
 
-The plugin launches `char-nightly mcp`. It requires Char Nightly `0.0.1-nightly.80` or newer. MCP is local stdio. Page edits apply directly through Char's editor operation pipeline, and export may persist normalized editor state for stable block IDs.
+## Setup
+
+1. In Char, open **Settings → Account → Cloud access for agents**.
+2. Select pages and choose **Share selected pages**. This uploads server-readable copies, separately from encrypted device sync.
+3. Install this plugin and sign in to Char when your agent requests access.
+
+```json
+{
+  "mcpServers": {
+    "char": { "type": "http", "url": "https://char.com/api/mcp" }
+  }
+}
+```
+
+For Claude Code, install the Fastrepl marketplace or load the bundle with `claude --plugin-dir /absolute/path/to/plugins/char`. Codex and Cursor use the host manifests shipped in this bundle.
+
+## Data and tools
+
+`get_status` reports sharing and the last upload time. `search` finds shared pages. `export_page` reads a snapshot as Markdown without changing the source page. These tools cannot edit pages, access local files, or download recordings or attachments.
+
+Selected pages update from the publishing desktop while Char is running. Changes made while it is closed appear after that desktop syncs and uploads again. Use the returned `publishedAt` when freshness matters. Removing a page locally removes its cloud copy on the next successful upload; **Turn off and delete cloud copies** revokes all sharing immediately when the server confirms it.
+
+See the [setup reference](skills/char/references/setup.md) and [MCP reference](skills/char/references/mcp.md). The [local CLI](skills/char/references/cli.md) is a separate optional workflow and is not required for cloud MCP.
 
 ## Branding
 
-`assets/icon.png` is Char's square app icon. Codex uses the bundled file for composer, light, and dark artwork. Cursor uses the public, versioned asset URL because its relative logo paths resolve from the repository root. Claude Code and the portable Agent Plugins manifest do not define an icon field.
+The bundled square Char icon is used by Codex. Cursor uses the same published icon by URL. All clients use the same shared skill and hosted MCP configuration.

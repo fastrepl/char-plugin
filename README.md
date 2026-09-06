@@ -2,18 +2,15 @@
 
 <img src="plugins/char/assets/icon.png" width="96" height="96" alt="Char">
 
-Official Char plugin for Codex, Claude Code, Cursor, and compatible agents. Search local Char pages, tasks, people, and organizations, export page content, and apply requested page edits.
+Official Char plugin for Codex, Claude Code, Cursor, and compatible agents. Search and read the pages you explicitly share through Char's hosted MCP service.
 
-## Requirements
+## Setup
 
-Install [Char Nightly 0.0.1-nightly.80](https://char.com/api/v1/ota/desktop/nightly/char-nightly-0.0.1-nightly.80-mac-arm64.dmg) or newer and enable its CLI in settings. The CLI must include the MCP command:
+1. In Char, open **Settings → Account → Cloud access for agents**.
+2. Select pages and choose **Share selected pages**. This uploads copies that Char and authorized agents can read, separately from encrypted device sync.
+3. Install the plugin and sign in to Char when the agent requests access.
 
-```sh
-char-nightly --version
-char-nightly mcp --help
-```
-
-Nightly `0.0.1-nightly.80` is the first release with MCP. The plugin uses your local Nightly data.
+Agents can read uploaded pages while Char is closed. Updates upload from the publishing desktop while Char is running. The cloud plugin does not require a local CLI or MCP process.
 
 ## Codex
 
@@ -33,30 +30,26 @@ Start a new task after installation so Codex loads the plugin.
 
 ## Cursor and other clients
 
-This repository includes a Cursor marketplace manifest and a portable agent plugin at [`plugins/char`](plugins/char). For direct MCP configuration:
+This repository includes a Cursor marketplace manifest and a portable plugin at [`plugins/char`](plugins/char). For direct MCP configuration:
 
 ```json
 {
   "mcpServers": {
-    "char": {
-      "command": "char-nightly",
-      "args": ["mcp"]
-    }
+    "char": { "type": "http", "url": "https://char.com/api/mcp" }
   }
 }
 ```
 
-If the client cannot find `char-nightly`, replace `command` with the absolute CLI path returned by `command -v char-nightly`. Desktop apps may have a different PATH from your terminal.
+The shared skill can also be installed from [`plugins/char/skills/char`](plugins/char/skills/char).
 
-The shared skill can also be installed independently from [`plugins/char/skills/char`](plugins/char/skills/char).
+## Tools and data
 
-## Tools
+- `get_status` reports sharing status and the last upload time.
+- `search` finds shared cloud pages.
+- `export_page` returns a page snapshot as Markdown without changing it.
 
-- `get_status` confirms the local channel and desktop bridge status.
-- `search` finds pages, tasks, people, and organizations.
-- `export_page` returns markdown with stable block IDs. It may persist normalized editor state.
-- `edit_page` applies a requested block edit directly in Char. Export first and verify after editing.
+These tools are read-only. Only selected pages are uploaded; attachment files and recordings are excluded. Results include `publishedAt` so agents can report freshness. Local deletion removes a cloud copy on the next successful upload. **Turn off and delete cloud copies** revokes sharing when the server confirms it. Signing out stops updates but does not delete existing cloud copies.
 
-See [CLI commands](plugins/char/skills/char/references/cli.md), [MCP inputs](plugins/char/skills/char/references/mcp.md), and [setup](plugins/char/skills/char/references/setup.md).
+See [setup](plugins/char/skills/char/references/setup.md) and [MCP inputs](plugins/char/skills/char/references/mcp.md). The [local CLI](plugins/char/skills/char/references/cli.md) remains a separate optional workflow for local data and editing.
 
-This is a local stdio integration. It does not provide a hosted MCP endpoint. The plugin contains no credentials; it uses the installed Char CLI.
+Version 0.2.0 replaces the local stdio connection used by 0.1.x. Existing installations must update the plugin and complete Char OAuth sign-in.

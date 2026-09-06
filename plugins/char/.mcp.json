@@ -1,9 +1,8 @@
 {
   "mcpServers": {
     "char": {
-      "type": "stdio",
-      "command": "char-nightly",
-      "args": ["mcp"]
+      "type": "http",
+      "url": "https://char.com/api/mcp"
     }
   }
 }

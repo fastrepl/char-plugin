@@ -1,15 +1,14 @@
 # Setup and troubleshooting
 
-Install Char Nightly and enable its CLI in settings. Check `char-nightly --version`, `char-nightly db status`, and `char-nightly mcp --help`.
+1. Use a Char desktop release with **Settings → Account → Cloud access for agents**.
+2. Sign in, select up to 50 pages, and choose **Share selected pages** after reading the disclosure. Each selected page must contain at most 65,536 characters of Markdown.
+3. Install this plugin in Codex, Claude Code, or Cursor. On connection, sign in to Char and grant read access.
+4. Run `get_status`, then `search` with an empty query to confirm uploaded pages are available.
 
-The MCP command requires Char Nightly `0.0.1-nightly.80` or newer. Reinstalling the CLI shim alone cannot add commands absent from the app bundle.
+The plugin requires no installed CLI, API key, or running desktop to read existing snapshots. The publishing desktop must run to upload new changes. It uploads periodically while signed in; another device can take over by saving its selection.
 
-The plugin uses `char-nightly` on PATH. If a desktop agent cannot find it, configure the absolute CLI path returned by `command -v char-nightly`. A terminal and a desktop app may have different PATH values.
+If a page is missing, select it in Char and check the last upload time. If sign-in fails, reconnect the Char MCP account. Never request the user's session cookies, OAuth tokens, or recovery key in chat.
 
-- Unknown `mcp` command: update Char Nightly. The skill can still use existing CLI search/export/edit commands.
-- Wrong channel: verify `get_status` or `db status`. Do not switch channels without the user's intent.
-- Unhealthy bridge: open or restart the matching Char app and retry. The CLI refuses direct fallback while an existing bridge descriptor is unhealthy.
-- Missing page: search again or confirm the daily date. Do not create data merely to satisfy a read.
-- Failed edit: export again before retrying; a timed-out operation may still complete.
+To revoke all access, choose **Turn off and delete cloud copies** in Char and wait for confirmation. Disconnecting one OAuth client stops that client's access but does not remove copies still shared with other authorized clients. Signing out of the desktop stops uploads; it does not revoke existing cloud sharing.
 
-See the [installation guide](https://github.com/fastrepl/char-agent-plugin#readme) for client configuration.
+For an explicitly requested local workflow, Char Nightly 0.0.1-nightly.80 or newer includes `char-nightly mcp` and the commands in the [CLI reference](cli.md). This is a separate local stdio server and does not share the hosted server's tool contract.
