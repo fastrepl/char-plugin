@@ -6,14 +6,14 @@
   },
   "metadata": {
     "description": "Official Char agent plugin",
-    "version": "0.1.0"
+    "version": "0.1.1"
   },
   "plugins": [
     {
       "name": "char",
       "source": "./plugins/char",
       "description": "Search and edit local Char pages through the Nightly CLI and MCP.",
-      "version": "0.1.0"
+      "version": "0.1.1"
     }
   ]
 }

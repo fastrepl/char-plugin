@@ -1,5 +1,7 @@
 # Char for agents
 
+<img src="plugins/char/assets/icon.png" width="96" height="96" alt="Char">
+
 Official Char plugin for Codex, Claude Code, Cursor, and compatible agents. Search local Char pages, tasks, people, and organizations, export page content, and apply requested page edits.
 
 ## Requirements

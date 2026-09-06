@@ -1,6 +1,6 @@
 {
   "name": "char",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Search and edit local Char pages through the Nightly CLI and MCP.",
   "author": {
     "name": "Fastrepl",
@@ -22,6 +22,7 @@
     "websiteURL": "https://char.com",
     "defaultPrompt": ["Find my notes about the launch.", "Summarize my daily page in Char."],
     "composerIcon": "./assets/icon.png",
-    "logo": "./assets/icon.png"
+    "logo": "./assets/icon.png",
+    "logoDark": "./assets/icon.png"
   }
 }
