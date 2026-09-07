@@ -5,15 +5,15 @@
     "url": "https://char.com"
   },
   "metadata": {
-    "description": "Official Char agent plugin",
-    "version": "0.2.0"
+    "description": "Official Char plugin",
+    "version": "0.2.1"
   },
   "plugins": [
     {
       "name": "char",
       "source": "./plugins/char",
       "description": "Search and read explicitly shared Char cloud pages.",
-      "version": "0.2.0"
+      "version": "0.2.1"
     }
   ]
 }

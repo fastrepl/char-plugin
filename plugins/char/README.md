@@ -1,9 +1,8 @@
-# Char for agents
+# Char plugin
 
 <img src="assets/icon.png" width="96" height="96" alt="Char">
 
 Search and read the Char pages you explicitly share with agents. Claude Code, Codex, and Cursor use one hosted MCP service with Char account sign-in. The service is read-only and remains accessible while Char is closed.
-
 
 ## Setup
 

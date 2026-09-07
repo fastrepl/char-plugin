@@ -1,4 +1,4 @@
-# Char for agents
+# Char plugin
 
 <img src="plugins/char/assets/icon.png" width="96" height="96" alt="Char">
 
@@ -15,7 +15,7 @@ Agents can read uploaded pages while Char is closed. Updates upload from the pub
 ## Codex
 
 ```sh
-codex plugin marketplace add fastrepl/char-agent-plugin
+codex plugin marketplace add fastrepl/char-plugin
 codex plugin add char@fastrepl-char
 ```
 
@@ -24,7 +24,7 @@ Start a new task after installation so Codex loads the plugin.
 ## Claude Code
 
 ```text
-/plugin marketplace add fastrepl/char-agent-plugin
+/plugin marketplace add fastrepl/char-plugin
 /plugin install char@fastrepl-char
 ```
 

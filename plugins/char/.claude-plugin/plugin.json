@@ -1,13 +1,13 @@
 {
   "name": "char",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Search and read explicitly shared Char cloud pages through authenticated MCP.",
   "author": {
     "name": "Fastrepl",
     "url": "https://char.com"
   },
-  "homepage": "https://github.com/fastrepl/char-agent-plugin#readme",
-  "repository": "https://github.com/fastrepl/char-agent-plugin",
+  "homepage": "https://github.com/fastrepl/char-plugin#readme",
+  "repository": "https://github.com/fastrepl/char-plugin",
   "license": "GPL-3.0-only",
   "keywords": ["notes", "pages", "mcp", "cloud"],
   "skills": "./skills/",
